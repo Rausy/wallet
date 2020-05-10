@@ -112,7 +112,7 @@ public class Wallet extends JavaPlugin
 	/*
 	 * @param player The UUID of the player whom you want to load the wallet.
 	 */
-	public void loadPlayerWallet(UUID player)
+	public void loadWallet(UUID player)
 	{
 		// Read player data
 		ConfigurationSection section = data.getConfigurationSection(player.toString());
@@ -134,7 +134,7 @@ public class Wallet extends JavaPlugin
 	/*
 	 * @return A list of available tokens and their symbols.
 	 */
-	public List<String> getTokenList()
+	public List<String> getTokens()
 	{
 		return Collections.unmodifiableList(tokens);
 	}
@@ -153,7 +153,7 @@ public class Wallet extends JavaPlugin
 	 * @param token The name of the token.
 	 * @return The amount this player has of a given token.
 	 */
-	public int getToken(UUID player, String token)
+	public int getFromWallet(UUID player, String token)
 	{
 		return wallets.containsKey(player) ? wallets.get(player).getOrDefault(token, 0) : 0;
 	}
@@ -163,7 +163,7 @@ public class Wallet extends JavaPlugin
 	 * @param token The name of the token.
 	 * @param amount The amount to set.
 	 */
-	public void setToken(UUID player, String token, int amount)
+	public void setWallet(UUID player, String token, int amount)
 	{
 		// Add missing values
 		if (!wallets.containsKey(player))
@@ -180,7 +180,7 @@ public class Wallet extends JavaPlugin
 	 * @param token The name of the token.
 	 * @param amount The amount to give.
 	 */
-	public void giveToken(UUID player, String token, int amount)
+	public void giveToWallet(UUID player, String token, int amount)
 	{
 		// Add missing values
 		if (!wallets.containsKey(player))
@@ -203,7 +203,7 @@ public class Wallet extends JavaPlugin
 	 * @param token The name of the token.
 	 * @param amount The amount to take.
 	 */
-	public void takeToken(UUID player, String token, int amount)
+	public void takeFromWallet(UUID player, String token, int amount)
 	{
 		// Add missing values
 		if (!wallets.containsKey(player))

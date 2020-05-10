@@ -129,7 +129,7 @@ public class MainCommand implements CommandExecutor, TabCompleter
 
 			if (ply != null)
 			{
-				plugin.giveToken(ply.getUniqueId(), args[2], Integer.parseInt(args[3]));
+				plugin.giveToWallet(ply.getUniqueId(), args[2], Integer.parseInt(args[3]));
 				sender.sendMessage(prefix + ChatColor.GRAY + " Gave " + ChatColor.RED + args[3] + " " + args[2] + ChatColor.GRAY + " to " + ply.getName() + ".");
 				return true;
 			}
@@ -167,7 +167,7 @@ public class MainCommand implements CommandExecutor, TabCompleter
 
 			if (ply != null)
 			{
-				plugin.takeToken(ply.getUniqueId(), args[2], Integer.parseInt(args[3]));
+				plugin.takeFromWallet(ply.getUniqueId(), args[2], Integer.parseInt(args[3]));
 				sender.sendMessage(prefix + ChatColor.GRAY + " Took " + ChatColor.RED + args[3] + " " + args[2] + ChatColor.GRAY + " from " + ply.getName() + ".");
 				return true;
 			}
@@ -205,7 +205,7 @@ public class MainCommand implements CommandExecutor, TabCompleter
 
 			if (ply != null)
 			{
-				plugin.setToken(ply.getUniqueId(), args[2], Integer.parseInt(args[3]));
+				plugin.setWallet(ply.getUniqueId(), args[2], Integer.parseInt(args[3]));
 				sender.sendMessage(prefix + ChatColor.GRAY + " Set " + ply.getName() + "'s " + ChatColor.RED + args[2] + ChatColor.GRAY + " to " + ChatColor.RED + args[3] + ChatColor.GRAY + ".");
 				return true;
 			}
@@ -249,14 +249,14 @@ public class MainCommand implements CommandExecutor, TabCompleter
 		}
 		else if (args.length == 3)
 		{
-			list = plugin.getTokenList();
+			list = plugin.getTokens();
 		}
 		return list;
 	}
 
 	private String[] getWallet(Player player)
 	{
-		List<String> tokens = plugin.getTokenList();
+		List<String> tokens = plugin.getTokens();
 		String[] display = new String[tokens.size() + 1];
 		display[0] = ChatColor.GOLD + "[" + player.getName() + "'s Wallet]";
 		for (int i = 0; i < tokens.size(); ++i)
@@ -264,7 +264,7 @@ public class MainCommand implements CommandExecutor, TabCompleter
 			String token = tokens.get(i);
 			String symbol = plugin.getSymbol(token);
 			String str = token.substring(0,1).toUpperCase() + token.substring(1).toLowerCase();
-			display[i + 1] = ChatColor.GREEN + str + ": " + ChatColor.RED + symbol + plugin.getToken(player.getUniqueId(), token);
+			display[i + 1] = ChatColor.GREEN + str + ": " + ChatColor.RED + symbol + plugin.getFromWallet(player.getUniqueId(), token);
 		}
 		return display;
 	}

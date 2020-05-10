@@ -12,6 +12,6 @@ public class JoinListener implements Listener
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event)
 	{
-		plugin.loadPlayerWallet(event.getPlayer().getUniqueId());
+		plugin.loadWallet(event.getPlayer().getUniqueId());
 	}
 }
