@@ -1,0 +1,16 @@
+# What kinds of tokens can players have?
+tokens:
+  money: $
+  gems: ""
+  points: p
+
+# If disabled a flatfile will be used
+database:
+  enabled: false
+  # Valid values: SQLITE, MYSQL
+  type: MYSQL
+  host: localhost
+  port: 3306
+  database: wallet
+  username: root
+  password: xyz

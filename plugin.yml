@@ -1,0 +1,24 @@
+name: Wallet
+description: Configurable token system
+author: Raus
+main: com.raus.wallet.Wallet
+version: 1.0
+api-version: 1.15
+
+commands:
+  wallet:
+    description: Wallet
+    default: true
+    usage: "Usage: /wallet help"
+    aliaes: w
+
+permissions:
+  wallet.reload:
+    default: op
+    description: Allows you to reload the config
+  wallet.peek:
+    default: op
+    description: Allows you to peek into other's wallets
+  wallet.modify:
+    default: op
+    description: Allows you to modify other's wallets
